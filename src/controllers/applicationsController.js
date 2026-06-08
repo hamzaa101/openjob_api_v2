@@ -1,6 +1,6 @@
-const ApplicationsService = require("../services/applicationsService");
-const CacheService = require("../cache/cacheService");
-const { ProducerService } = require("../queue/producer");
+const ApplicationsService = require('../services/applicationsService');
+const CacheService = require('../cache/cacheService');
+const { ProducerService } = require('../queue/producer');
 
 const ApplicationsController = {
   async createApplication(req, res, next) {
@@ -21,11 +21,11 @@ const ApplicationsController = {
       ProducerService.sendMessage({
         application_id: application.id,
       }).catch((error) => {
-        console.error("Gagal publish application message:", error.message);
+        console.error('Gagal publish application message:', error.message);
       });
 
       return res.status(201).json({
-        status: "success",
+        status: 'success',
         data: application,
       });
     } catch (error) {
@@ -36,12 +36,11 @@ const ApplicationsController = {
   async getApplications(req, res, next) {
     try {
       const applications = await ApplicationsService.getApplications();
-      const mappedApplications = applications.map(mapApplicationResponse);
 
       return res.status(200).json({
-        status: "success",
+        status: 'success',
         data: {
-          applications: mappedApplications,
+          applications,
         },
       });
     } catch (error) {
@@ -57,10 +56,10 @@ const ApplicationsController = {
       const cachedApplication = await CacheService.get(cacheKey);
 
       if (cachedApplication) {
-        res.setHeader("X-Data-Source", "cache");
+        res.setHeader('X-Data-Source', 'cache');
 
         return res.status(200).json({
-          status: "success",
+          status: 'success',
           data: cachedApplication,
         });
       }
@@ -69,11 +68,11 @@ const ApplicationsController = {
 
       await CacheService.set(cacheKey, application);
 
-      res.setHeader("X-Data-Source", "database");
+      res.setHeader('X-Data-Source', 'database');
 
       return res.status(200).json({
-        status: "success",
-        data: mapApplicationResponse(application),
+        status: 'success',
+        data: application,
       });
     } catch (error) {
       return next(error);
@@ -88,10 +87,10 @@ const ApplicationsController = {
       const cachedApplications = await CacheService.get(cacheKey);
 
       if (cachedApplications) {
-        res.setHeader("X-Data-Source", "cache");
+        res.setHeader('X-Data-Source', 'cache');
 
         return res.status(200).json({
-          status: "success",
+          status: 'success',
           data: {
             applications: cachedApplications,
           },
@@ -99,16 +98,15 @@ const ApplicationsController = {
       }
 
       const applications = await ApplicationsService.getApplicationsByUserId(userId);
-      const mappedApplications = applications.map(mapApplicationResponse);
 
       await CacheService.set(cacheKey, applications);
 
-      res.setHeader("X-Data-Source", "database");
+      res.setHeader('X-Data-Source', 'database');
 
       return res.status(200).json({
-        status: "success",
+        status: 'success',
         data: {
-          applications: mappedApplications,
+          applications,
         },
       });
     } catch (error) {
@@ -124,10 +122,10 @@ const ApplicationsController = {
       const cachedApplications = await CacheService.get(cacheKey);
 
       if (cachedApplications) {
-        res.setHeader("X-Data-Source", "cache");
+        res.setHeader('X-Data-Source', 'cache');
 
         return res.status(200).json({
-          status: "success",
+          status: 'success',
           data: {
             applications: cachedApplications,
           },
@@ -135,16 +133,15 @@ const ApplicationsController = {
       }
 
       const applications = await ApplicationsService.getApplicationsByJobId(jobId);
-      const mappedApplications = applications.map(mapApplicationResponse);
 
       await CacheService.set(cacheKey, applications);
 
-      res.setHeader("X-Data-Source", "database");
+      res.setHeader('X-Data-Source', 'database');
 
       return res.status(200).json({
-        status: "success",
+        status: 'success',
         data: {
-          applications: mappedApplications,
+          applications,
         },
       });
     } catch (error) {
@@ -168,8 +165,8 @@ const ApplicationsController = {
       ]);
 
       return res.status(200).json({
-        status: "success",
-        message: "Application berhasil diperbarui",
+        status: 'success',
+        message: 'Application berhasil diperbarui',
       });
     } catch (error) {
       return next(error);
@@ -191,8 +188,8 @@ const ApplicationsController = {
       ]);
 
       return res.status(200).json({
-        status: "success",
-        message: "Application berhasil dihapus",
+        status: 'success',
+        message: 'Application berhasil dihapus',
       });
     } catch (error) {
       return next(error);
