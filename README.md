@@ -1,4 +1,4 @@
-# OpenJob RESTful API V1
+# OpenJob RESTful API V2
 
 OpenJob RESTful API V1 adalah RESTful API sederhana untuk aplikasi rekrutmen internal perusahaan. API ini dibuat menggunakan Node.js, Express.js, PostgreSQL, node-pg-migrate, Joi, JWT, bcrypt, dan multer.
 
@@ -18,6 +18,10 @@ OpenJob RESTful API V1 adalah RESTful API sederhana untuk aplikasi rekrutmen int
 * Authentication menggunakan JWT Bearer Token
 * Data validation menggunakan Joi
 * Error handling middleware
+* Upload dokumen PDF maksimal 5 MB
+* Redis Caching
+* RabbitMQ message queue
+* Email notification consumer dengan Nodemailer
 
 ## Tech Stack
 
