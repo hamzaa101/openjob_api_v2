@@ -1,6 +1,7 @@
 const express = require('express');
 
 const AuthenticationsController = require('../controllers/authenticationsController');
+const authenticate = require('../middlewares/auth');
 const validate = require('../middlewares/validate');
 const {
   LoginPayloadSchema,
@@ -23,6 +24,7 @@ router.put(
 
 router.delete(
   '/',
+  authenticate,
   validate(RefreshTokenPayloadSchema),
   AuthenticationsController.logout,
 );
