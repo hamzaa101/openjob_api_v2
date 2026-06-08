@@ -2,6 +2,16 @@ const ApplicationsService = require('../services/applicationsService');
 const CacheService = require('../cache/cacheService');
 const { ProducerService } = require('../queue/producer');
 
+const mapApplicationResponse = (application) => {
+  const {
+    company_location,
+    category_name,
+    ...mappedApplication
+  } = application;
+
+  return mappedApplication;
+};
+
 const ApplicationsController = {
   async createApplication(req, res, next) {
     try {
@@ -36,11 +46,12 @@ const ApplicationsController = {
   async getApplications(req, res, next) {
     try {
       const applications = await ApplicationsService.getApplications();
+      const mappedApplications = applications.map(mapApplicationResponse);
 
       return res.status(200).json({
         status: 'success',
         data: {
-          applications,
+          applications: mappedApplications,
         },
       });
     } catch (error) {
@@ -65,14 +76,15 @@ const ApplicationsController = {
       }
 
       const application = await ApplicationsService.getApplicationById(id);
+      const mappedApplication = mapApplicationResponse(application);
 
-      await CacheService.set(cacheKey, application);
+      await CacheService.set(cacheKey, mappedApplication);
 
       res.setHeader('X-Data-Source', 'database');
 
       return res.status(200).json({
         status: 'success',
-        data: application,
+        data: mappedApplication,
       });
     } catch (error) {
       return next(error);
@@ -98,15 +110,16 @@ const ApplicationsController = {
       }
 
       const applications = await ApplicationsService.getApplicationsByUserId(userId);
+      const mappedApplications = applications.map(mapApplicationResponse);
 
-      await CacheService.set(cacheKey, applications);
+      await CacheService.set(cacheKey, mappedApplications);
 
       res.setHeader('X-Data-Source', 'database');
 
       return res.status(200).json({
         status: 'success',
         data: {
-          applications,
+          applications: mappedApplications,
         },
       });
     } catch (error) {
@@ -133,15 +146,16 @@ const ApplicationsController = {
       }
 
       const applications = await ApplicationsService.getApplicationsByJobId(jobId);
+      const mappedApplications = applications.map(mapApplicationResponse);
 
-      await CacheService.set(cacheKey, applications);
+      await CacheService.set(cacheKey, mappedApplications);
 
       res.setHeader('X-Data-Source', 'database');
 
       return res.status(200).json({
         status: 'success',
         data: {
-          applications,
+          applications: mappedApplications,
         },
       });
     } catch (error) {

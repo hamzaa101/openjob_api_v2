@@ -5,6 +5,30 @@ const {
   NotFoundError,
 } = require('../utils/errors');
 
+const APPLICATION_SELECT = `
+  SELECT
+    a.id,
+    a.user_id,
+    a.job_id,
+    a.status,
+    a.created_at,
+    a.updated_at,
+    u.name AS user_name,
+    u.email AS user_email,
+    j.title AS job_title,
+    j.description AS job_description,
+    j.company_id,
+    c.name AS company_name,
+    c.location AS company_location,
+    j.category_id,
+    cat.name AS category_name
+  FROM applications a
+  JOIN users u ON u.id = a.user_id
+  JOIN jobs j ON j.id = a.job_id
+  JOIN companies c ON c.id = j.company_id
+  JOIN categories cat ON cat.id = j.category_id
+`;
+
 const ApplicationsService = {
   async verifyUserExists(userId) {
     const query = {
@@ -84,19 +108,7 @@ const ApplicationsService = {
   async getApplications() {
     const query = {
       text: `
-        SELECT
-          a.id,
-          a.user_id,
-          a.job_id,
-          a.status,
-          a.created_at,
-          a.updated_at,
-          u.name AS user_name,
-          u.email AS user_email,
-          j.title AS job_title
-        FROM applications a
-        JOIN users u ON u.id = a.user_id
-        JOIN jobs j ON j.id = a.job_id
+        ${APPLICATION_SELECT}
         ORDER BY a.created_at DESC
       `,
     };
@@ -109,19 +121,7 @@ const ApplicationsService = {
   async getApplicationById(id) {
     const query = {
       text: `
-        SELECT
-          a.id,
-          a.user_id,
-          a.job_id,
-          a.status,
-          a.created_at,
-          a.updated_at,
-          u.name AS user_name,
-          u.email AS user_email,
-          j.title AS job_title
-        FROM applications a
-        JOIN users u ON u.id = a.user_id
-        JOIN jobs j ON j.id = a.job_id
+        ${APPLICATION_SELECT}
         WHERE a.id = $1
       `,
       values: [id],
@@ -139,19 +139,7 @@ const ApplicationsService = {
   async getApplicationsByUserId(userId) {
     const query = {
       text: `
-        SELECT
-          a.id,
-          a.user_id,
-          a.job_id,
-          a.status,
-          a.created_at,
-          a.updated_at,
-          u.name AS user_name,
-          u.email AS user_email,
-          j.title AS job_title
-        FROM applications a
-        JOIN users u ON u.id = a.user_id
-        JOIN jobs j ON j.id = a.job_id
+        ${APPLICATION_SELECT}
         WHERE a.user_id = $1
         ORDER BY a.created_at DESC
       `,
@@ -166,19 +154,7 @@ const ApplicationsService = {
   async getApplicationsByJobId(jobId) {
     const query = {
       text: `
-        SELECT
-          a.id,
-          a.user_id,
-          a.job_id,
-          a.status,
-          a.created_at,
-          a.updated_at,
-          u.name AS user_name,
-          u.email AS user_email,
-          j.title AS job_title
-        FROM applications a
-        JOIN users u ON u.id = a.user_id
-        JOIN jobs j ON j.id = a.job_id
+        ${APPLICATION_SELECT}
         WHERE a.job_id = $1
         ORDER BY a.created_at DESC
       `,
