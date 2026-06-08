@@ -1,0 +1,219 @@
+{
+  "_": {
+    "postman_variable_scope": "environment",
+    "postman_exported_at": "2026-06-08T14:29:01.871Z",
+    "postman_exported_using": "Newman/6.2.2"
+  },
+  "id": "22179b20-0429-41f8-a641-df5cd3734b5a",
+  "name": "OpenJob API",
+  "values": [
+    {
+      "type": "any",
+      "value": "3000",
+      "key": "port"
+    },
+    {
+      "type": "any",
+      "value": "user-1780928916273-dyrgr2b6",
+      "key": "userId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "companyId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "categoryId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "jobId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "jobCompanyId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "jobCategoryId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "applicationJobId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "applicationId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "bookmarkId"
+    },
+    {
+      "type": "any",
+      "value": [],
+      "key": "badUserPayloads"
+    },
+    {
+      "type": "any",
+      "value": "{\"name\":\"John\",\"email\":\"john@example.com\",\"password\":\"123\"}",
+      "key": "currentBadUserPayload"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "badCompanyPayloads"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "currentBadCompanyPayload"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "badJobPayloads"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "currentBadJobPayload"
+    },
+    {
+      "type": "any",
+      "value": [],
+      "key": "badLoginPayloads"
+    },
+    {
+      "type": "any",
+      "value": "{\"email\":\"dicoding\",\"password\":true}",
+      "key": "currentBadLoginPayload"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVzZXItMTc4MDkyODkxNjI3My1keXJncjJiNiIsImlhdCI6MTc4MDkyODkyMywiZXhwIjoxNzgwOTM5NzIzfQ.0jeGQ-GWk2MdeAHEGzaqHK8dmuzEc0NEpBj2jUIGCXA",
+      "key": "accessTokenJohn"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVzZXItMTc4MDkyODkxNjI3My1keXJncjJiNiIsImlhdCI6MTc4MDkyODkyM30.lynjLNAL9MAAeAkaUECbMFRbkEGezKW48aBqtcdCMDc",
+      "key": "refreshTokenJohn"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVzZXItMTc4MDkyODkyMjY3Mi1xZTJpOXh0dyIsImlhdCI6MTc4MDkyODkyMywiZXhwIjoxNzgwOTM5NzIzfQ.S80eEwkuY33TGjd3wxo5HB1OBwyGPOn51CwXNZqIVnM",
+      "key": "accessTokenJane"
+    },
+    {
+      "type": "any",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVzZXItMTc4MDkyODkyMjY3Mi1xZTJpOXh0dyIsImlhdCI6MTc4MDkyODkyM30.usQ7JWIGsyqs4di8Ujdr9-KLA2FXgjecuJc_4lDzilI",
+      "key": "refreshTokenJane"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "profileAccessToken"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "profileRefreshToken"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "accessToken"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "refreshToken"
+    },
+    {
+      "type": "any",
+      "value": "{\"name\":\"\"}",
+      "key": "currentBadCategoryPayload"
+    },
+    {
+      "type": "any",
+      "value": [],
+      "key": "badCategoryPayloads"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "documentsAccessToken"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "documentId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "newApplicationId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "newUserId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "ownerUserId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "applicantUserId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "ownerAccessToken"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "ownerRefreshToken"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "applicantAccessToken"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "mqCompanyId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "mqCategoryId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "mqJobId"
+    },
+    {
+      "type": "any",
+      "value": "",
+      "key": "mqApplicationId"
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2026-06-08T14:32:49.550Z",
+  "_postman_exported_using": "Newman/6.2.2"
+}
